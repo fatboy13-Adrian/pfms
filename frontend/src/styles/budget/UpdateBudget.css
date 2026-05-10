@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+html, body, #root {
+    min-height: 100%;
+    background-color: #f5f5f5;
+}
+
+.container-centered {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1rem;
+}
+
+.form-wrapper {
+    background-color: #fff;
+    padding: 2.5rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+    color: #333;
+}
+
+.form-wrapper h3 {
+    border-bottom: 2px solid #000;
+    margin: 1.5rem 0 1rem 0;
+    padding-bottom: 0.3rem;
+    color: #000;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input[type="text"], 
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+    margin-top: 0.3rem;
+}
+
+input:focus {
+    border-color: #000;
+    box-shadow: 0 0 5px rgba(0,123,255,0.2);
+    outline: none;
+}
+
+.alert {
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.alert-danger { background-color: #f8d7da; color: #721c24; }
+.alert-success { background-color: #d4edda; color: #155724; }
+
+.mb-3 { margin-bottom: 1rem; }
+.full-width { width: 100%; }
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.button-wrapper button {
+    flex: 1;
+    padding: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.field-group-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 480px) {
+    .button-wrapper {
+        flex-direction: column;
+    }
+    .button-wrapper button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container-centered {
+        padding: 4rem 2rem;
+    }
+
+    .form-wrapper {
+        max-width: 800px;
+    }
+
+    .field-group-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .form-wrapper {
+        max-width: 1000px;
+    }
+}
