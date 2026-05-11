@@ -14,8 +14,7 @@ public class YearMonthConverter implements AttributeConverter<YearMonth, String>
         return attribute == null ? null : attribute.toString(); 
     }
 
-    //Convert Stirng from DB back to YearMonth
-    @Override
+    @Override   //Convert Stirng from DB back to YearMonth
     public YearMonth convertToEntityAttribute(String dbData) {
         //If DB value is null, return null
         //Otherwise, parse String into YearMonth object
