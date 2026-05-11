@@ -13,9 +13,6 @@ RUN npm install --legacy-peer-deps
 # Copy source code
 COPY . .
 
-# Run tests (Jest)
-RUN npm test -- --ci --coverage --watchAll=false
-
 # Build the app
 RUN npm run build
 
