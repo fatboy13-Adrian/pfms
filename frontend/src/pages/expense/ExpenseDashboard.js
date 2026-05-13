@@ -59,6 +59,9 @@ export default function ExpenseDashboard() {
                         <button className = "custom-btn" onClick={() => navigate("/expenses/update")}>
                             Update
                         </button>
+                        <button className = "custom-btn" onClick = {() => setDate("")}>
+                            Clear Filter
+                        </button>
                         <button className = "custom-btn" onClick={() => navigate("/expenses")}>
                             Expense
                         </button>

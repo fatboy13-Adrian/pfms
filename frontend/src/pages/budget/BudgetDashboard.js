@@ -28,15 +28,12 @@ export default function BudgetDashboard() {
             });
     }, []);
 
-    const now = new Date();
-    const currentYear = now.getFullYear();
-
-    const filteredBudgets = budgets.filter((budget) => {
-        if (!budget.month) return false;
-        const budgetDate = new Date(budget.month);
-        const isCurrentYear = budgetDate.getFullYear() === currentYear;
-        const matchesMonth = month === "" || budgetDate.toISOString().slice(0, 7) === month;
-        return isCurrentYear && matchesMonth;
+    const filteredBudgets = budgets
+    .filter((budget) => budget.month)
+    .filter((budget) => {
+        const budgetMonth = new Date(budget.month);
+        const matchedMonths = month === "" || budgetMonth.toISOString().slice(0,7) === month;
+        return matchedMonths
     });
 
     const downloadExcel = async () => {
@@ -82,6 +79,9 @@ export default function BudgetDashboard() {
                         </button>
                         <button onClick = {downloadExcel}>
                             Download
+                        </button>
+                        <button className = "custom-btn" onClick = {() => setMonth("")}>
+                            Clear Filter
                         </button>
                         <button className = "custom-btn" onClick = {() => navigate("/budgets")}>
                             Budget
