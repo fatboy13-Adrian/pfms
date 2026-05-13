@@ -35,7 +35,7 @@ export default function ExpenseTable({expenses = [], onUpdate, actionsDisabled})
                         <th>Lunch</th>
                         <th>Dinner</th>
                         <th>Eating Out</th>
-                        <th>Grocery</th>
+                        <th>Groceries</th>
                         <th>Medical</th>
                         <th>Entertainment</th>
                         <th>Holiday</th>
@@ -67,7 +67,7 @@ export default function ExpenseTable({expenses = [], onUpdate, actionsDisabled})
                             <td>{formatMoney(expense.lunch)}</td>
                             <td>{formatMoney(expense.dinner)}</td>
                             <td>{formatMoney(expense.eatingOut)}</td>
-                            <td>{formatMoney(expense.grocery)}</td>
+                            <td>{formatMoney(expense.groceries)}</td>
                             <td>{formatMoney(expense.medical)}</td>
                             <td>{formatMoney(expense.entertainment)}</td>
                             <td>{formatMoney(expense.holiday)}</td>

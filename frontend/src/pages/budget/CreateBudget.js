@@ -10,21 +10,6 @@ const initialState = {
     month: "",
     income: "",
     retirement: "",
-    insurance: "",
-    mobilePhone: "",
-    internet: "",
-    utilities: "",
-    tax: "",
-    mortgage: "",
-    debt: "",
-    allowancesForParents: "",
-    transport: "",
-    food: "",
-    groceries: "",
-    haircut: "",
-    medical: "",
-    misc: "",
-    savings: "",
 };
 
 const fieldGroups = [
@@ -40,62 +25,6 @@ const fieldGroups = [
         fields: [
             {name: "retirement", label: "Retirement"},
         ]
-    },
-
-    {
-        title: "Utilities & Household Maintenance",
-        fields: [
-            {name: "mobilePhone", label: "Mobile Phone"},
-            {name: "internet", label: "Internet"},
-            {name: "utilities", label: "Utilities"},
-        ]
-    },
-
-    {
-        title: "Tax",
-        fields: [
-            {name: "tax", label: "Tax"},
-        ]
-    },
-
-    {
-        title: "Fixed Expenses",
-        fields: [
-            {name: "mortgage", label: "Mortgage"},
-            {name: "debts", label: "Debts"},
-            {name: "allowancesForParents", label: "Allowances For Parents"},
-        ],
-    },
-    
-    {
-        title: "Transport",
-        fields: [
-            {name: "transport", label: "Transport"},
-        ],
-    },
-
-    {
-        title: "Food & Necessities",
-        fields: [
-            {name: "food", label: "Food"},
-            {name: "groceries", label: "Groceries"},
-            {name: "haircut", label: "Haircut"},
-            {name: "medical", label: "Medical"},
-        ],
-    },
-
-    {
-        title: "Misc",
-        fields: [
-            {name: "misc", label: "Misc"},
-        ],
-    },
-
-    {
-        title: "Savings",
-        fields: [
-            {name: "savings", label: "Savings"},
-        ],
     },
 ];
 

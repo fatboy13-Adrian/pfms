@@ -27,20 +27,9 @@ export default function ExpenseDashboard() {
             });
     }, []);
 
-    const currentMonth = new Date().getMonth();
-    const currentYear = new Date().getFullYear();
-
-    const filteredExpenses = expenses.filter((expense) => {
-        if (!expense.date) {
-            return false;
-        }
-
-        const expenseDate = new Date(expense.date);
-        const isCurrentMonth = expenseDate.getMonth() === currentMonth && expenseDate.getFullYear() === currentYear;
-        if (!isCurrentMonth) {
-            return false;
-        }
-
+    const filteredExpenses = expenses
+    .filter((expense) => expense.date)
+    .filter((expense) => {
         const matchesSelectedDate = date === "" || expense.date.substring(0, 10) === date;
         return matchesSelectedDate;
     }).sort((a, b) => new Date(b.date) - new Date(a.date));
