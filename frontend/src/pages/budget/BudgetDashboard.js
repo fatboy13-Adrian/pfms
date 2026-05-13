@@ -75,7 +75,7 @@ export default function BudgetDashboard() {
                     </div>
                     <div className = "buttons-center">
                         <button className = "custom-btn" onClick = {() => navigate("/budgets/create")}>
-                            Create
+                            New
                         </button>
                         <button className = "custom-btn" onClick = {() => navigate("/budgets/update")}>
                             Update

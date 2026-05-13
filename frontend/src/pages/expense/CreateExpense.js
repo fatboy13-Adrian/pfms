@@ -174,7 +174,7 @@ export default function CreateExpense () {
             <div className = "form-wrapper">
             <h2 className = "text-center">Create Expense Record</h2>
             {error && <div className = "alert alert-danger">{error}</div>}
-            {success && <div className = "alert alert-success">Created Successfully!</div>}
+            {success && <div className = "alert alert-success">Created Expense Record Successfully!</div>}
             <form onSubmit = {onSubmit} noValidate>
                 <DateInput name = "date" value = {expense.date} onChange = {onInputChange} disabled = {loading}/>
                 {fieldGroups.map(group => (
@@ -199,10 +199,10 @@ export default function CreateExpense () {
 
                 <div className = "button-wrapper">
                 <Button type = "submit" disabled = {loading || success}>
-                    {loading ? "Creating..." : "Create"}
+                    {loading ? "Creating..." : "New"}
                 </Button>
                 <button className = "button" onClick={() => navigate("/expenses/retrieve")}>
-                    Retrieve
+                    View
                 </button>
                 <Button type = "button" onClick = {() => navigate("/expenses/update")} className = "full-button">
                     Update

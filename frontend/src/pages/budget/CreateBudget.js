@@ -183,10 +183,10 @@ export default function CreateBudget() {
 
                     <div className = "button-wrapper">
                         <Button type = "submit" disabled = {loading || success}>
-                            {loading ? "Creating..." : "Create"}
+                            {loading ? "Creating..." : "New"}
                         </Button>
                         <button type = "button" className = "button" onClick = {() => navigate("/budgets/retrieve")}>
-                            Retrieve
+                            View
                         </button>
                         <button type = "button" className = "button" onClick={() => navigate("/budgets/update")}>
                             Update

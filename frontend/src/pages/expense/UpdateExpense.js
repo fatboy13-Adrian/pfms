@@ -158,7 +158,7 @@ export default function UpdateExpense() {
                 </div>
 
                 {error && <div className = "alert alert-danger">{error}</div>}
-                {success && <div className = "alert alert-success">Updated Successfully!</div>}
+                {success && <div className = "alert alert-success">Updated Existing Record Successfully!</div>}
                 {expense && (
                     <form onSubmit = {onSubmit} noValidate>
                         {fieldGroups.map(group => (
@@ -183,10 +183,10 @@ export default function UpdateExpense() {
 
                         <div className = "button-wrapper">
                             <Button type = "button" onClick = {() => navigate("/expenses/create")}>
-                                Create
+                                New
                             </Button>
                             <Button type = "button" onClick = {() => navigate("/expenses/retrieve")}>
-                                Retrieve
+                                View
                             </Button>
                             <Button type = "submit" disabled = {loading}>
                                 {loading ? "Updating..." : "Update"}

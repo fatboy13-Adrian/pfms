@@ -11,10 +11,10 @@ export default function Budget() {
                     <h1>Bduget Calculator</h1>
                     <div className = "buttons-group-inline">
                         <Button type = "button" onClick = {() => navigate("/budgets/create")} className = "full-button">
-                            Create
+                            New
                         </Button>
                         <Button type = "button" onClick = {() => navigate("/budgets/retrieve")} className = "full-button">
-                            Retrieve
+                            View
                         </Button>
                         <Button type = "button" onClick = {() => navigate("/budgets/update")} className = "full-button">
                             Update

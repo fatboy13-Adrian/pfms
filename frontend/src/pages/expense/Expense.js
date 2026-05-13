@@ -11,10 +11,10 @@ export default function Expense() {
                     <h1>Expense Calculator</h1>
                     <div className = "buttons-group-inline">
                        <Button type = "button" onClick = {() => navigate("/expenses/create")} className = "full-button">
-                            Create
+                            New
                         </Button>
                         <Button type = "button" onClick = {() => navigate("/expenses/retrieve")} className = "full-button">
-                            Retrieve
+                            View
                         </Button>
                         <Button type = "button" onClick = {() => navigate("/expenses/update")} className = "full-button">
                             Update

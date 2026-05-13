@@ -97,7 +97,7 @@ export default function UpdateBudget() {
             setBudget(data);
             setBudgetId(data.id);
         } catch {
-            setError("No record found for this record.");
+            setError("No record found.");
         } finally {
             setLoading(false);
       }
@@ -185,10 +185,10 @@ export default function UpdateBudget() {
 
                         <div className = "button-wrapper">
                             <button type = "button" onClick = {() => navigate("/budgets/create")}>
-                                Create
+                                New
                             </button>
                             <button type="button" className="button" onClick={() => navigate("/budgets/retrieve")}>
-                                Retrieve
+                                View
                             </button>
                             <button type = "submit" disabled = {loading}>
                                 {loading ? "Updating..." : "Update"}

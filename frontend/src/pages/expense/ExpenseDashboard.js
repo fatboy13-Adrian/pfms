@@ -65,7 +65,7 @@ export default function ExpenseDashboard() {
 
                     <div className = "buttons-center">
                         <button className = "custom-btn" onClick={() => navigate("/expenses/create")}>
-                            Create
+                            New
                         </button>
                         <button className = "custom-btn" onClick={() => navigate("/expenses/update")}>
                             Update
