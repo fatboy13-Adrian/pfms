@@ -38,10 +38,8 @@ public class BudgetService {
     @Transactional
     public BudgetDTO createBudget(BudgetDTO dto) {
         //Checks if month already exists
-        if (dao.findByMonth(dto.getMonth()).isPresent()) {
-            throw new MonthAlreadyExistsException(dto.getMonth());
-        }
-
+        if (dao.findByMonth(dto.getMonth()).isPresent()) throw new MonthAlreadyExistsException(dto.getMonth());
+        
         //Create new budget
         Budget b = new Budget();
 
@@ -142,10 +140,8 @@ public class BudgetService {
         Budget existing = findBudget(month);
 
         //Prevent duplicate month conflict when changing month
-        if (!month.equals(dto.getMonth()) && dao.findByMonth(dto.getMonth()).isPresent()) {
-            throw new MonthAlreadyExistsException(dto.getMonth());
-        }
-
+        if (!month.equals(dto.getMonth()) && dao.findByMonth(dto.getMonth()).isPresent()) throw new MonthAlreadyExistsException(dto.getMonth());
+        
         applyUserFields(existing, dto);
         applySnapshot(existing);
         Budget updated = dao.save(existing);

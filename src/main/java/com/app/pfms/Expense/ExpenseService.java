@@ -191,9 +191,7 @@ public class ExpenseService {
 
     private List<Expense> loadMonth(YearMonth month) {
         //Validate month
-        if (month == null) {
-            throw new IllegalArgumentException("Month cannot be null");
-        }
+        if (month == null) throw new IllegalArgumentException("Month cannot be null");
         
         //Fetch all expenses within month range
         return dao.findByDateBetween(month.atDay(1), month.atEndOfMonth());
