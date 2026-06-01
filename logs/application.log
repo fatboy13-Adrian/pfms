@@ -12294,3 +12294,639 @@ Unconditional classes:
 2026-06-01T20:33:30.637+08:00 DEBUG 31280 --- [pfms] [restartedMain] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager after transaction
 2026-06-01T20:33:30.639+08:00  INFO 31280 --- [pfms] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
 2026-06-01T20:33:30.639+08:00 DEBUG 31280 --- [pfms] [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2026-06-01T20:35:22.204+08:00  INFO 31280 --- [pfms] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-01T20:35:22.205+08:00  INFO 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-01T20:35:22.205+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2026-06-01T20:35:22.205+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2026-06-01T20:35:22.206+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7265751d
+2026-06-01T20:35:22.206+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@40ecda13
+2026-06-01T20:35:22.207+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-06-01T20:35:22.207+08:00  INFO 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-01T20:35:22.218+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/budgets/month/2026-02", parameters={}
+2026-06-01T20:35:22.235+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudget(YearMonth)
+2026-06-01T20:35:22.260+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:35:22.284+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.d.j.r.query.PartTreeJpaQuery         : QueryPreparer: Derived query for query method [public abstract java.util.Optional com.app.pfms.Budget.BudgetDAO.findByMonth(java.time.YearMonth)]: 'SELECT b FROM Budget b WHERE b.month = :month'
+2026-06-01T20:35:22.285+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0 
+    where
+        b1_0.month=?
+2026-06-01T20:35:22.343+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:35:22.344+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.app.pfms.Budget.BudgetDTO@319c4d19]
+2026-06-01T20:35:22.419+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:35:22.421+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:04.677+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/budgets", parameters={}
+2026-06-01T20:36:04.677+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudgets()
+2026-06-01T20:36:04.678+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:04.679+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(252618411<open>)] for JPA transaction
+2026-06-01T20:36:04.679+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:04.681+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1121293134 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:04.681+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@20dbac4e]
+2026-06-01T20:36:04.695+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:04.698+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:04.698+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(252618411<open>)]
+2026-06-01T20:36:04.698+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1121293134 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:04.699+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:04.701+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:04.701+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetDTO@40c97c6c, com.app.pfms.Budget.BudgetDTO@58851d84, com.app.pfms.Budget (truncated)...]
+2026-06-01T20:36:04.704+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:04.704+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:04.706+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/budgets", parameters={}
+2026-06-01T20:36:04.707+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudgets()
+2026-06-01T20:36:04.707+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:04.707+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1913864487<open>)] for JPA transaction
+2026-06-01T20:36:04.708+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:04.708+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@2094309653 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:04.708+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@78eb2a57]
+2026-06-01T20:36:04.709+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:04.710+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:04.710+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1913864487<open>)]
+2026-06-01T20:36:04.712+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@2094309653 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:04.712+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:04.712+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:04.713+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetDTO@112bd6a, com.app.pfms.Budget.BudgetDTO@28fd07e8, com.app.pfms.Budget. (truncated)...]
+2026-06-01T20:36:04.714+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:04.714+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:08.381+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/budgets/summary", parameters={}
+2026-06-01T20:36:08.381+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveYearlySummaries()
+2026-06-01T20:36:08.382+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:08.382+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(556479702<open>)] for JPA transaction
+2026-06-01T20:36:08.382+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:08.383+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@804048515 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:08.383+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2bd35fa6]
+2026-06-01T20:36:08.385+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:08.387+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:08.388+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(556479702<open>)]
+2026-06-01T20:36:08.389+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@804048515 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:08.389+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:08.390+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:08.390+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetSummaryDTO@7508bd42, com.app.pfms.Budget.BudgetSummaryDTO@329a8038, com.a (truncated)...]
+2026-06-01T20:36:08.394+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:08.394+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/budgets/summary", parameters={}
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveYearlySummaries()
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1158425197<open>)] for JPA transaction
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1271651516 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4ff4411d]
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1158425197<open>)]
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1271651516 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:08.395+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:08.402+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetSummaryDTO@3faa5456, com.app.pfms.Budget.BudgetSummaryDTO@4753ceb4, com.a (truncated)...]
+2026-06-01T20:36:08.403+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:08.404+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:11.827+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/budgets", parameters={}
+2026-06-01T20:36:11.827+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudgets()
+2026-06-01T20:36:11.828+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:11.828+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(64007290<open>)] for JPA transaction
+2026-06-01T20:36:11.828+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:11.829+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@219628144 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:11.829+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@928c70a]
+2026-06-01T20:36:11.832+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:11.834+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:11.834+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(64007290<open>)]
+2026-06-01T20:36:11.834+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@219628144 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:11.834+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:11.835+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:11.836+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetDTO@3c264319, com.app.pfms.Budget.BudgetDTO@4f6f0db8, com.app.pfms.Budget (truncated)...]
+2026-06-01T20:36:11.837+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:11.838+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:11.839+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/budgets", parameters={}
+2026-06-01T20:36:11.840+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudgets()
+2026-06-01T20:36:11.840+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:11.842+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1487062290<open>)] for JPA transaction
+2026-06-01T20:36:11.842+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:11.842+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1449468022 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:11.842+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@525aae62]
+2026-06-01T20:36:11.844+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:11.853+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:11.853+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1487062290<open>)]
+2026-06-01T20:36:11.855+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1449468022 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:11.855+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:11.856+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:11.856+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetDTO@3505f5b4, com.app.pfms.Budget.BudgetDTO@53bb4ec, com.app.pfms.Budget. (truncated)...]
+2026-06-01T20:36:11.857+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:11.857+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:18.808+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/budgets/month/2026-03", parameters={}
+2026-06-01T20:36:18.809+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudget(YearMonth)
+2026-06-01T20:36:18.809+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:18.810+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.s.d.j.r.query.PartTreeJpaQuery         : QueryPreparer: Derived query for query method [public abstract java.util.Optional com.app.pfms.Budget.BudgetDAO.findByMonth(java.time.YearMonth)]: 'SELECT b FROM Budget b WHERE b.month = :month'
+2026-06-01T20:36:18.810+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0 
+    where
+        b1_0.month=?
+2026-06-01T20:36:18.811+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:18.812+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.app.pfms.Budget.BudgetDTO@222d2788]
+2026-06-01T20:36:18.813+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:18.813+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/budgets", parameters={}
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudgets()
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(291583861<open>)] for JPA transaction
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@531028777 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@1b995c05]
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(291583861<open>)]
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@531028777 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:29.845+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:29.851+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:29.851+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetDTO@250a0650, com.app.pfms.Budget.BudgetDTO@38e08f14, com.app.pfms.Budget (truncated)...]
+2026-06-01T20:36:29.853+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:29.853+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:29.855+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/budgets", parameters={}
+2026-06-01T20:36:29.855+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveBudgets()
+2026-06-01T20:36:29.855+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:29.856+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(735783098<open>)] for JPA transaction
+2026-06-01T20:36:29.856+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:29.856+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@598929083 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:29.856+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@6cb7748]
+2026-06-01T20:36:29.858+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:29.859+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:29.860+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(735783098<open>)]
+2026-06-01T20:36:29.860+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@598929083 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:29.860+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:29.861+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:29.861+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetDTO@6fd6ae56, com.app.pfms.Budget.BudgetDTO@5896267f, com.app.pfms.Budget (truncated)...]
+2026-06-01T20:36:29.862+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:29.862+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:31.581+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/budgets/export/2026", parameters={}
+2026-06-01T20:36:31.582+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#exportBudgetRecords(Year)
+2026-06-01T20:36:31.582+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:31.584+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.d.j.r.query.PartTreeJpaQuery         : QueryPreparer: Derived query for query method [public abstract java.util.List com.app.pfms.Budget.BudgetDAO.findByMonthBetween(java.time.YearMonth,java.time.YearMonth)]: 'SELECT b FROM Budget b WHERE b.month BETWEEN :start AND :end'
+2026-06-01T20:36:31.586+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0 
+    where
+        b1_0.month between ? and ?
+2026-06-01T20:36:33.253+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' in response
+2026-06-01T20:36:33.253+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [InputStream resource [resource loaded through InputStream]]
+2026-06-01T20:36:33.255+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:33.255+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:50.028+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/expenses", parameters={}
+2026-06-01T20:36:50.028+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Expense.ExpenseController#retrieveExpenses()
+2026-06-01T20:36:50.029+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:50.030+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(2132778910<open>)] for JPA transaction
+2026-06-01T20:36:50.032+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:50.032+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1190499008 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:50.033+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7c6e81ba]
+2026-06-01T20:36:50.034+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.aia,
+        e1_0.allowancesForParents,
+        e1_0.breakfast,
+        e1_0.criticare,
+        e1_0.date,
+        e1_0.debt,
+        e1_0.dinner,
+        e1_0.eatingOut,
+        e1_0.entertainment,
+        e1_0.groceries,
+        e1_0.haircut,
+        e1_0.holiday,
+        e1_0.incomeTax,
+        e1_0.internet,
+        e1_0.lunch,
+        e1_0.medical,
+        e1_0.mobilePhone,
+        e1_0.mortgage,
+        e1_0.others,
+        e1_0.privateTransport,
+        e1_0.propertyTax,
+        e1_0.publicTransport,
+        e1_0.shopping,
+        e1_0.sports,
+        e1_0.tech,
+        e1_0.termProtector,
+        e1_0.utilities 
+    from
+        expense e1_0
+2026-06-01T20:36:50.046+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:50.047+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(2132778910<open>)]
+2026-06-01T20:36:50.049+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1190499008 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:50.049+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:50.050+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:50.051+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Expense.ExpenseDTO@7358bbcc, com.app.pfms.Expense.ExpenseDTO@5ba1ac56, com.app.pfms.Ex (truncated)...]
+2026-06-01T20:36:50.057+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/expenses", parameters={}
+2026-06-01T20:36:50.058+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Expense.ExpenseController#retrieveExpenses()
+2026-06-01T20:36:50.059+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:50.059+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(459236026<open>)] for JPA transaction
+2026-06-01T20:36:50.059+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:50.060+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1503341322 wrapping org.postgresql.jdbc.PgConnection@1e123914] read-only
+2026-06-01T20:36:50.060+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@565b9fe]
+2026-06-01T20:36:50.064+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.aia,
+        e1_0.allowancesForParents,
+        e1_0.breakfast,
+        e1_0.criticare,
+        e1_0.date,
+        e1_0.debt,
+        e1_0.dinner,
+        e1_0.eatingOut,
+        e1_0.entertainment,
+        e1_0.groceries,
+        e1_0.haircut,
+        e1_0.holiday,
+        e1_0.incomeTax,
+        e1_0.internet,
+        e1_0.lunch,
+        e1_0.medical,
+        e1_0.mobilePhone,
+        e1_0.mortgage,
+        e1_0.others,
+        e1_0.privateTransport,
+        e1_0.propertyTax,
+        e1_0.publicTransport,
+        e1_0.shopping,
+        e1_0.sports,
+        e1_0.tech,
+        e1_0.termProtector,
+        e1_0.utilities 
+    from
+        expense e1_0
+2026-06-01T20:36:50.073+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:50.074+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(459236026<open>)]
+2026-06-01T20:36:50.075+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1503341322 wrapping org.postgresql.jdbc.PgConnection@1e123914]
+2026-06-01T20:36:50.075+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:50.076+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:50.076+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Expense.ExpenseDTO@239ff3fa, com.app.pfms.Expense.ExpenseDTO@7d931e98, com.app.pfms.Ex (truncated)...]
+2026-06-01T20:36:50.078+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:50.079+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:50.084+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:50.085+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:58.727+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/budgets/summary", parameters={}
+2026-06-01T20:36:58.727+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveYearlySummaries()
+2026-06-01T20:36:58.728+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:58.728+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1738740967<open>)] for JPA transaction
+2026-06-01T20:36:58.728+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:58.730+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@31380331 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:58.730+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3b74e83]
+2026-06-01T20:36:58.734+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:58.736+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:58.736+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1738740967<open>)]
+2026-06-01T20:36:58.737+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@31380331 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:58.737+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:58.737+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:58.738+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetSummaryDTO@4236cbaf, com.app.pfms.Budget.BudgetSummaryDTO@63c034e4, com.a (truncated)...]
+2026-06-01T20:36:58.738+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:58.739+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:36:58.739+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/budgets/summary", parameters={}
+2026-06-01T20:36:58.740+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#retrieveYearlySummaries()
+2026-06-01T20:36:58.740+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:58.740+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1622625311<open>)] for JPA transaction
+2026-06-01T20:36:58.740+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:36:58.740+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@45229049 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:36:58.740+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@76ef90d4]
+2026-06-01T20:36:58.742+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:36:58.744+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:36:58.744+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1622625311<open>)]
+2026-06-01T20:36:58.744+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@45229049 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:36:58.744+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:36:58.745+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/yaml]
+2026-06-01T20:36:58.745+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.app.pfms.Budget.BudgetSummaryDTO@4fd29652, com.app.pfms.Budget.BudgetSummaryDTO@4b3a7586, com.a (truncated)...]
+2026-06-01T20:36:58.746+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:36:58.746+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:37:00.824+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/budgets/summary/export", parameters={}
+2026-06-01T20:37:00.825+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.app.pfms.Budget.BudgetController#exportYearlySummaries()
+2026-06-01T20:37:00.825+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.j.s.OpenEntityManagerInViewInterceptor : Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:37:00.826+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(838190826<open>)] for JPA transaction
+2026-06-01T20:37:00.826+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2026-06-01T20:37:00.826+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Setting JDBC Connection [HikariProxyConnection@1781527477 wrapping org.postgresql.jdbc.PgConnection@550fed2a] read-only
+2026-06-01T20:37:00.826+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2a6c622e]
+2026-06-01T20:37:00.828+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.allowancesForParents,
+        b1_0.debt,
+        b1_0.food,
+        b1_0.groceries,
+        b1_0.haircut,
+        b1_0.income,
+        b1_0.insurance,
+        b1_0.internet,
+        b1_0.medical,
+        b1_0.misc,
+        b1_0.mobilePhone,
+        b1_0.month,
+        b1_0.mortgage,
+        b1_0.retirement,
+        b1_0.savings,
+        b1_0.tax,
+        b1_0.transport,
+        b1_0.utilities 
+    from
+        budget b1_0
+2026-06-01T20:37:00.829+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2026-06-01T20:37:00.829+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(838190826<open>)]
+2026-06-01T20:37:00.829+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.jdbc.datasource.DataSourceUtils      : Resetting read-only flag of JDBC Connection [HikariProxyConnection@1781527477 wrapping org.postgresql.jdbc.PgConnection@550fed2a]
+2026-06-01T20:37:00.830+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2026-06-01T20:37:00.873+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Found 'Content-Type:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' in response
+2026-06-01T20:37:00.874+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [InputStream resource [resource loaded through InputStream]]
+2026-06-01T20:37:00.874+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.j.s.OpenEntityManagerInViewInterceptor : Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2026-06-01T20:37:00.874+08:00 DEBUG 31280 --- [pfms] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-06-01T20:38:27.936+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-06-01T20:38:27.936+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext@5a013a75, started on Mon Jun 01 20:33:28 SGT 2026
+2026-06-01T20:38:27.937+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147482623
+2026-06-01T20:38:27.937+08:00  INFO 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-01T20:38:27.940+08:00  INFO 31280 --- [pfms] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-01T20:38:27.940+08:00 DEBUG 31280 --- [pfms] [tomcat-shutdown] o.s.c.support.DefaultLifecycleProcessor  : Bean 'webServerGracefulShutdown' completed its stop procedure
+2026-06-01T20:38:27.940+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147481599
+2026-06-01T20:38:27.942+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'webServerStartStop' completed its stop procedure
+2026-06-01T20:38:27.942+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 1073741823
+2026-06-01T20:38:27.942+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'applicationTaskExecutor' completed its stop procedure
+2026-06-01T20:38:27.942+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase -2147483647
+2026-06-01T20:38:27.942+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.c.support.DefaultLifecycleProcessor  : Bean 'springBootLoggingLifecycle' completed its stop procedure
+2026-06-01T20:38:27.943+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2026-06-01T20:38:27.943+08:00  INFO 31280 --- [pfms] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-01T20:38:27.944+08:00  INFO 31280 --- [pfms] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-06-01T20:38:27.946+08:00  INFO 31280 --- [pfms] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-06-01T20:38:27.946+08:00 DEBUG 31280 --- [pfms] [SpringApplicationShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
