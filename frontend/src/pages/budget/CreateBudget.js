@@ -112,7 +112,7 @@ export default function CreateBudget() {
 
                     <div className = "button-wrapper">
                         <Button type = "submit" disabled = {loading || success}>
-                            {loading ? "Creating..." : "New"}
+                            {loading ? "Creating..." : "Save"}
                         </Button>
                         <button type = "button" className = "button" onClick = {() => navigate("/budgets/retrieve")}>
                             View

@@ -1,8 +1,10 @@
 package com.app.pfms.Budget;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,21 +20,22 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import com.app.pfms.Exceptions.Budget.BudgetNotFoundException;
 import com.app.pfms.Exceptions.Budget.MonthAlreadyExistsException;
 import com.app.pfms.Exceptions.Budget.MonthNotFoundException;
-import com.app.pfms.Expense.ExpenseService;
+import com.app.pfms.Expense.ExpenseDAO;
 
 @ExtendWith(MockitoExtension.class) 
 public class BudgetServiceTest {
     @InjectMocks    //Service under test
     private BudgetService budgetSvc;
 
-    @Mock   //Expense service used for snapshot calculations
-    private ExpenseService expSvc;
-
     @Mock   //Mocked DAO layer
     private BudgetDAO dao;
+
+    @Mock
+    private ExpenseDAO expDAO;
 
     private Budget b;
     private BudgetDTO dto;
@@ -81,30 +84,17 @@ public class BudgetServiceTest {
         b.setMisc(dto.getMisc());
     }
 
- @Test
+    @Test
     public void testCreateBudget() {
         //Arrange: month does not exist yet
         when(dao.findByMonth(dto.getMonth()))
         .thenReturn(Optional.empty());
+        when(expDAO.findByDateBetween(any(LocalDate.class), 
+        any(LocalDate.class)))
+        .thenReturn(List.of());
 
         when(dao.save(any(Budget.class)))
         .thenReturn(b);
-
-        //Mock all expense snapshot calculations used by service
-        when(expSvc.calculateInsurance(any())).thenReturn(BigDecimal.valueOf(155.0));
-        when(expSvc.calculateMobilePhone(any())).thenReturn(BigDecimal.valueOf(15.0));
-        when(expSvc.calculateInternet(any())).thenReturn(BigDecimal.valueOf(90.46));
-        when(expSvc.calculateUtilities(any())).thenReturn(BigDecimal.valueOf(45.0));
-        when(expSvc.calculateTax(any())).thenReturn(BigDecimal.valueOf(10.02));
-        when(expSvc.calculateMortgage(any())).thenReturn(BigDecimal.valueOf(1000.0));
-        when(expSvc.calculateDebt(any())).thenReturn(BigDecimal.valueOf(650.0));
-        when(expSvc.calculateAllowancesForParents(any())).thenReturn(BigDecimal.valueOf(800.0));
-        when(expSvc.calculateTransport(any())).thenReturn(BigDecimal.valueOf(122.0));
-        when(expSvc.calculateFood(any())).thenReturn(BigDecimal.valueOf(500.0));
-        when(expSvc.calculateGroceries(any())).thenReturn(BigDecimal.valueOf(100.0));
-        when(expSvc.calculateHaircut(any())).thenReturn(BigDecimal.valueOf(15.0));
-        when(expSvc.calculateMedical(any())).thenReturn(BigDecimal.valueOf(75.0));
-        when(expSvc.calculateMisc(any())).thenReturn(BigDecimal.valueOf(200.0));
 
         //Act: create budget
         BudgetDTO result = budgetSvc.createBudget(dto);
@@ -212,29 +202,13 @@ public class BudgetServiceTest {
         verify(dao, times(1)).findAll();
     }
 
-     @Test
+    @Test
     void testUpdateBudgetByMonth() {
         YearMonth month = YearMonth.of(2026, 4);
 
         //Arrange: existing budget found
         when(dao.findByMonth(month)).thenReturn(Optional.of(b));
         when(dao.save(any(Budget.class))).thenReturn(b);
-
-        //Mock recalculation values (all zero for simplicity)
-        when(expSvc.calculateInsurance(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMobilePhone(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateInternet(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateUtilities(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateTax(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMortgage(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateDebt(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateAllowancesForParents(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateTransport(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateFood(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateGroceries(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateHaircut(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMedical(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMisc(any())).thenReturn(BigDecimal.ZERO);
 
         //Act
         BudgetDTO result = budgetSvc.updateBudgetByMonth(month, dto);
@@ -269,22 +243,6 @@ public class BudgetServiceTest {
         //Arrange: existing budget found
         when(dao.findById(id)).thenReturn(Optional.of(b));
         when(dao.save(any(Budget.class))).thenReturn(b);
-
-        //Mock recalculation values (all zero for simplicity)
-        when(expSvc.calculateInsurance(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMobilePhone(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateInternet(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateUtilities(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateTax(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMortgage(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateDebt(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateAllowancesForParents(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateTransport(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateFood(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateGroceries(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateHaircut(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMedical(any())).thenReturn(BigDecimal.ZERO);
-        when(expSvc.calculateMisc(any())).thenReturn(BigDecimal.ZERO);
 
         //Act
         BudgetDTO result = budgetSvc.updateBudgetById(id, dto);

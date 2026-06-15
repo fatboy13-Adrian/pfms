@@ -199,7 +199,7 @@ export default function CreateExpense () {
 
                 <div className = "button-wrapper">
                 <Button type = "submit" disabled = {loading || success}>
-                    {loading ? "Creating..." : "New"}
+                    {loading ? "Creating..." : "Save"}
                 </Button>
                 <button className = "button" onClick={() => navigate("/expenses/retrieve")}>
                     View

@@ -189,7 +189,7 @@ export default function UpdateExpense() {
                                 View
                             </Button>
                             <Button type = "submit" disabled = {loading}>
-                                {loading ? "Updating..." : "Update"}
+                                {loading ? "Updating..." : "Save"}
                             </Button>
                             <Button type = "button" onClick = {handleReset} disabled = {loading || success}>
                                 Discard

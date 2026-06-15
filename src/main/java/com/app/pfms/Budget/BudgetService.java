@@ -2,6 +2,7 @@ package com.app.pfms.Budget;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ import com.app.pfms.Exceptions.Budget.BudgetNotFoundException;
 import com.app.pfms.Exceptions.Budget.MonthAlreadyExistsException;
 import com.app.pfms.Exceptions.Budget.MonthNotFoundException;
 import com.app.pfms.Exceptions.ExportExcelFailedException;
-import com.app.pfms.Expense.ExpenseService;
+import com.app.pfms.Expense.Expense;
+import com.app.pfms.Expense.ExpenseDAO;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,11 +31,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class BudgetService {
-    //Data access layer for budget
+    //Data access layer for budget & expense
+    private final ExpenseDAO expDAO;
     private final BudgetDAO dao;
-
-    //Service used to compute expense breakdowns
-    private final ExpenseService expSvc;
 
     @Transactional
     public BudgetDTO createBudget(BudgetDTO dto) {
@@ -51,7 +51,7 @@ public class BudgetService {
 
         //Persist to DB
         Budget saved = dao.save(b);
-        
+
         //Convert budget to DTO for response
         return toDTO(saved);
     }
@@ -159,23 +159,56 @@ public class BudgetService {
         //Extract month for calculation
         YearMonth month = b.getMonth();
 
-        //Fetch expense totals from expense service
-        BigDecimal insurance = expSvc.calculateInsurance(month);
-        BigDecimal mobile = expSvc.calculateMobilePhone(month);
-        BigDecimal internet = expSvc.calculateInternet(month);
-        BigDecimal utilities = expSvc.calculateUtilities(month);
-        BigDecimal tax = expSvc.calculateTax(month);
-        BigDecimal mortgage = expSvc.calculateMortgage(month);
-        BigDecimal debt = expSvc.calculateDebt(month);
-        BigDecimal parents = expSvc.calculateAllowancesForParents(month);
-        BigDecimal transport = expSvc.calculateTransport(month);
-        BigDecimal food = expSvc.calculateFood(month);
-        BigDecimal groceries = expSvc.calculateGroceries(month);
-        BigDecimal haircut = expSvc.calculateHaircut(month);
-        BigDecimal medical = expSvc.calculateMedical(month);
-        BigDecimal misc = expSvc.calculateMisc(month);
+        //Find dates between 1st day to last day of the month
+        List<Expense> list = expDAO
+        .findByDateBetween(month.atDay(1), month.atEndOfMonth());
 
-        //Store calculated snapshots into budget
+        //Intialize all variables to 0.0
+        BigDecimal insurance = BigDecimal.ZERO;
+        BigDecimal mobile = BigDecimal.ZERO;
+        BigDecimal internet = BigDecimal.ZERO;
+        BigDecimal utilities = BigDecimal.ZERO;
+        BigDecimal tax = BigDecimal.ZERO;
+        BigDecimal mortgage = BigDecimal.ZERO;
+        BigDecimal debt = BigDecimal.ZERO;
+        BigDecimal parents = BigDecimal.ZERO;
+        BigDecimal transport = BigDecimal.ZERO;
+        BigDecimal food = BigDecimal.ZERO;
+        BigDecimal groceries = BigDecimal.ZERO;
+        BigDecimal haircut = BigDecimal.ZERO;
+        BigDecimal medical = BigDecimal.ZERO;
+        BigDecimal misc = BigDecimal.ZERO;
+
+        //Add up all expenses and update budget table
+        for (Expense e : list) {
+            insurance = insurance.add(e.getAia())
+            .add(e.getCriticare())
+            .add(e.getTermProtector());
+            mobile = mobile.add(e.getMobilePhone());
+            internet = internet.add(e.getInternet());
+            utilities = utilities.add(e.getUtilities());
+            tax = tax.add(e.getIncomeTax())
+            .add(e.getPropertyTax());
+            mortgage = mortgage.add(e.getMortgage());
+            debt = debt.add(e.getDebt());
+            parents = parents.add(e.getAllowancesForParents());
+            transport = transport.add(e.getPublicTransport())
+            .add(e.getPrivateTransport());
+            food = food.add(e.getBreakfast())
+            .add(e.getLunch()).add(e.getDinner())
+            .add(e.getEatingOut());
+            groceries = groceries.add(e.getGroceries());
+            haircut = haircut.add(e.getHaircut());
+            medical = medical.add(e.getMedical());
+            misc = misc.add(e.getEntertainment())
+            .add(e.getHoliday())
+            .add(e.getShopping())
+            .add(e.getSports())
+            .add(e.getTech())
+            .add(e.getOthers());
+        }
+
+        //Store calculated values into budget
         b.setInsurance(insurance);
         b.setMobilePhone(mobile);
         b.setInternet(internet);
@@ -231,29 +264,31 @@ public class BudgetService {
     }
 
     @Transactional
-    public void refreshCurrentMonthBudget() {
-        //Get current month
-        YearMonth currentMonth = YearMonth.now();
+    public void refreshBudget(LocalDate date) {
+        //Do not allow update if date is future date
+        if (date.isAfter(LocalDate.now()))
+            throw new IllegalArgumentException("Future dates not allowed");
+
+        //Get current date
+        YearMonth month = YearMonth.from(date);
 
         //Find by month or return null if not found
-        Budget budget = dao.findByMonth(currentMonth)
-        .orElse(null);
+        Budget b = dao.findByMonth(month).orElse(null);
 
         //Exit sliently if no records
-        if (budget == null) return;
+        if (b == null) return;
 
         //Auto recalculate expense breakdown snapshot
-        applySnapshot(budget);
+        applySnapshot(b);
 
         //Save updated record
-        dao.save(budget);
+        dao.save(b);
     }
 
     public BigDecimal calculateSavings(Budget b) {
         //Income subtract expenses
         return b.getIncome()
-                .subtract(
-                        b.getRetirement()
+                .subtract(b.getRetirement()
                         .add(b.getInsurance())
                         .add(b.getMobilePhone())
                         .add(b.getInternet())
@@ -494,24 +529,24 @@ public class BudgetService {
                 Row row = sheet.createRow(i + 1);
                 row.createCell(0).setCellValue(dto.getYear());
                 BigDecimal[] values = {
-                                    dto.getIncome(),
-                                    dto.getRetirement(),
-                                    dto.getInsurance(),
-                                    dto.getMobilePhone(),
-                                    dto.getInternet(),
-                                    dto.getUtilities(),
-                                    dto.getTax(),
-                                    dto.getMortgage(),
-                                    dto.getDebt(),
-                                    dto.getAllowancesForParents(),
-                                    dto.getTransport(),
-                                    dto.getFood(),
-                                    dto.getGroceries(),
-                                    dto.getHaircut(),
-                                    dto.getMedical(),
-                                    dto.getMisc(),
-                                    dto.getSavings()
-                            };
+                                        dto.getIncome(),
+                                        dto.getRetirement(),
+                                        dto.getInsurance(),
+                                        dto.getMobilePhone(),
+                                        dto.getInternet(),
+                                        dto.getUtilities(),
+                                        dto.getTax(),
+                                        dto.getMortgage(),
+                                        dto.getDebt(),
+                                        dto.getAllowancesForParents(),
+                                        dto.getTransport(),
+                                        dto.getFood(),
+                                        dto.getGroceries(),
+                                        dto.getHaircut(),
+                                        dto.getMedical(),
+                                        dto.getMisc(),
+                                        dto.getSavings()
+                };
 
                 for (int j = 0; j < values.length; j++) {
                     Cell cell = row.createCell(j + 1);

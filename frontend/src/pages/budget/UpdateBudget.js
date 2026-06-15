@@ -135,7 +135,7 @@ export default function UpdateBudget() {
                                 View
                             </button>
                             <button type = "submit" disabled = {loading}>
-                                {loading ? "Updating..." : "Update"}
+                                {loading ? "Updating..." : "Save"}
                             </button>
                             <Button type = "button" onClick = {handleReset} disabled = {loading || success}>
                                 Discard
